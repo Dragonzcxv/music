@@ -1,6 +1,6 @@
 module.exports = {
 	docRoot: '../www',
-	buildPath: './builds',
+	buildPath: '../www/builds',
 	entry: {
 		index: ['./src/entry/index.jsx'],
 	},

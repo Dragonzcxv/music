@@ -1,6 +1,6 @@
 <?php
 $config = include('../.config.php');
-$assets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/frontend/assets/{$config['env']}.json"));
+$assets = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/../frontend/assets/{$config['env']}.json"));
 $js_path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $assets->index->js);
 $css_path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $assets->index->css);
 ?>
