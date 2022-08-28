@@ -12,6 +12,9 @@ const css_loader = {
 				if (url.startsWith('../')) {
 					return false;
 				}
+				if (url.startsWith('var')) {
+					return false;
+				}
 				
 				return true;
 			},

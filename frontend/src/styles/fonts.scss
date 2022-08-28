@@ -2,7 +2,6 @@
 	// Подключайте тут все используемые шрифты
 	// Пример использования миксина
 	// @include font-face($name: "Roboto", $path: "font/Roboto-Regular", $weight: 400, $style: normal, $woff2: true);
-
 	@include font-face($name: "Poppins", $path: "fonts/Poppins-Light", $weight: 300, $style: normal, $woff2: true);
 	@include font-face($name: "Poppins", $path: "fonts/Poppins-Regular", $weight: 400, $style: normal, $woff2: true);
 	@include font-face($name: "Poppins", $path: "fonts/Poppins-Medium", $weight: 500, $style: normal, $woff2: true);
