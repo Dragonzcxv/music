@@ -40,7 +40,7 @@ $(() => {
 		.render(
 			<Router>
 				<SideMenu
-				 	title="Music"
+					title="Music"
 					icon="/mock/side-menu/icon.png"
 					items={ menu_items }
 				/>

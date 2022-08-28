@@ -1,14 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./side-menu.scss";
 
 class SideMenu extends React.Component {
 	block_name = "b-side-menu";
-
-	constructor(props) {
-		super(props);
-
-		console.log(props);
-	}
 
 	render() {
 		return (
@@ -29,5 +24,11 @@ class SideMenu extends React.Component {
 		);
 	}
 }
+
+SideMenu.propTypes = {
+	icon: PropTypes.string,
+	title: PropTypes.string,
+	items: PropTypes.array,
+};
 
 export default SideMenu;
