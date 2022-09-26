@@ -1,0 +1,17 @@
+@import "styles/styles";
+
+$block-name: "b-artist-page";
+
+.#{$block-name} {
+	&__banner {
+		.b-artist-banner {
+			width: 100%;
+			height: 21.75rem;
+		}
+	}
+
+	&__popular {
+		margin-top: 0.75rem;
+		margin-bottom: 1rem;
+	}
+}

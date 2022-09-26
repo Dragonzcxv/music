@@ -1,0 +1,39 @@
+@import "styles/styles";
+
+$block-name: "b-subscribe-button";
+
+.#{$block-name} {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $color-red;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	transition: transform 0.2s linear;
+
+	&:hover {
+		transform: scale(1.05);
+	}
+
+	&.active {
+		.#{$block-name}__name {
+			&::before {
+				content: "";
+				width: 1.5rem;
+				height: 1.5rem;
+				margin-right: 0.75rem;
+				background-image: url("/images/icons/border-arrow.png");
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+
+	&__name {
+		display: flex;
+		align-items: center;
+		font-weight: 700;
+		margin: 0 1rem;
+	}
+}

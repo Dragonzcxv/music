@@ -35,6 +35,44 @@
 	}
 }
 
+/// Задает отрицательные отступы
+///
+/// @param {bool} $main-content - добавляет отрицательные main отступы
+@mixin negative-container($side: "all", $main-content: true) {
+	box-sizing: border-box;
+	max-width: $content-width-max;
+	$indent: if($content-padding-over-max == 0, auto, $content-padding-over-max);
+
+	@if ($side == "all") {
+		margin-left: -$indent;
+		margin-right: -$indent;
+	} @else if ($side == "left") {
+		margin-left: -$indent;
+	} @else {
+		margin-right: -$indent;
+	}
+
+	@each $key, $val in map-reverse($site-breakpoints) {
+		@media (max-width: $val) {
+			$indent: if(map.get($content-padding, $key) == 0, auto, map.get($content-padding, $key));
+
+			@if ($main-content) {
+				$main-indent: if(map.get($main-padding, $key) == 0, auto, map.get($main-padding, $key));
+				$indent: $indent + $main-indent;
+			}
+
+			@if ($side == "all") {
+				margin-left: -$indent;
+				margin-right: -$indent;
+			} @else if ($side == "left") {
+				margin-left: -$indent;
+			} @else {
+				margin-right: -$indent;
+			}
+		}
+	}
+}
+
 /// Задает резиновые отступы на странице
 @mixin main-container() {
 	max-width: calc-width("full", $main-padding-over-max);

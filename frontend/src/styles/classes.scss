@@ -8,6 +8,21 @@
 	@include main-container;
 }
 
+// задаёт отрицательные отсутпы content отступа + main отступа c обоих сторон
+.l-negative-container-all {
+	@include negative-container($side: "all");
+}
+
+// задаёт отрицательные отсутпы content отступа + main отступа cправа
+.l-negative-container-right {
+	@include negative-container($side: "right");
+}
+
+// задаёт отрицательные отсутпы content отступа + main отступа cлева
+.l-negative-container-left {
+	@include negative-container($side: "left");
+}
+
 // растягивает элемент на всю ширину окна
 .l-stretch-all {
 	@include layout-negative-margin($side: "all");

@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import "./side-menu.scss";
 
 class SideMenu extends React.Component {
-	block_name = "b-side-menu";
+	constructor(props) {
+		super(props);
+		this.block_name = "b-side-menu";
+	}
 
 	render() {
 		return (
 			<div className={ this.block_name }>
 				<div className={ `${this.block_name}__header` }>
-					<img className={ `${this.block_name}__icon` } src={this.props.icon} />
+					<img className={ `${this.block_name}__icon` } src={ this.props.icon } />
 					<div className={ `${this.block_name}__title h2` }>{ this.props.title }</div>
 				</div>
 				<div className={ `${this.block_name}__items` }>

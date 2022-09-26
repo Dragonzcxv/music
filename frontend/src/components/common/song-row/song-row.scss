@@ -1,0 +1,73 @@
+@import "styles/styles";
+
+$block-name: "b-song-row";
+
+.#{$block-name} {
+	display: grid;
+	grid-template-columns: 2rem auto auto repeat(2, 1fr) 3.9rem 2.4rem;
+	align-items: center;
+	text-align: center;
+
+	&__number {
+		width: 2rem;
+		font-weight: 300;
+	}
+
+	&__char {
+		margin-right: 1.25rem;
+	}
+
+	&__album-image {
+		object-fit: contain;
+		width: auto;
+		height: 2.8rem;
+		margin-right: 1.5rem;
+	}
+
+	&__name {
+		text-align: left;
+	}
+
+	&__album-name {
+		text-align: left;
+		font-weight: 500;
+		color: $color-gray-light;
+	}
+
+	&__play {
+		position: relative;
+		width: 2.4rem;
+		height: 2.4rem;
+		mask-image: url("/images/icons/play.png");
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		background-color: $color-red;
+		cursor: pointer;
+		transition: transform 0.2s linear;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	&__favorite {
+		width: 2.4rem;
+		height: 2.4rem;
+		background-color: $color-gray-light;
+		mask-image: url("/images/icons/favorite.png");
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		cursor: pointer;
+		transition: transform 0.2s linear;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+
+		&.active {
+			background-color: $color-red;
+		}
+	}
+}

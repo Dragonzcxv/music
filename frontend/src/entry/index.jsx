@@ -5,7 +5,8 @@ import Home from "components/pages/home/Home";
 import NotFound from "components/pages/not-found/NotFound";
 import "normalize.css";
 import "styles/layout/index";
-import SideMenu from "../components/site/side-menu/SideMenu";
+import SideMenu from "components/site/side-menu/SideMenu";
+import ArtistPage from "../components/pages/artist/ArtistPage";
 
 $(() => {
 	const menu_items = [
@@ -46,8 +47,9 @@ $(() => {
 				/>
 				<main className="b-main">
 					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="*" element={<NotFound />} />
+						<Route path="/" element={ <Home /> } />
+						<Route path="/artist/" element={ <ArtistPage /> } />
+						<Route path="*" element={ <NotFound /> } />
 					</Routes>
 				</main>
 			</Router>
