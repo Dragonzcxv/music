@@ -8,6 +8,9 @@ class ArtistPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.block_name = "b-artist-page";
+		this.state = {
+			songs: this.getPopularSongs(),
+		};
 	}
 
 	getAlbums() {
@@ -60,6 +63,7 @@ class ArtistPage extends React.Component {
 	getPopularSongs() {
 		return [
 			{
+				id: 1,
 				number: 1,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
@@ -69,6 +73,7 @@ class ArtistPage extends React.Component {
 				isPlay: false
 			},
 			{
+				id: 2,
 				number: 2,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
@@ -78,6 +83,7 @@ class ArtistPage extends React.Component {
 				isPlay: false
 			},
 			{
+				id: 3,
 				number: 3,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
@@ -87,6 +93,7 @@ class ArtistPage extends React.Component {
 				isPlay: false
 			},
 			{
+				id: 4,
 				number: 4,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
@@ -98,30 +105,46 @@ class ArtistPage extends React.Component {
 		];
 	}
 
-	componentDidMount() {
-		const it = $(this.el);
-		const play_buttons = it.find(`.b-song-row__play`);
-		
-		// событие клика на "Избранное"
-		it.find(`.b-song-row__favorite`).click(function() {
-			$(this).toggleClass('active');
+	handleClickFavorite(id) {
+		const new_songs = [];
 
-			// Добавляем или удаляем из избранного
-			// TODO: метод добавления/удаления из избранного
+		this.state.songs.map(( item ) => {
+			let song = Object.assign({}, item);
+
+			if (item.id == id) {``
+				song.isFavorite = !song.isFavorite;
+			}
+
+			new_songs.push(song);
 		});
 
-		// событие клика на "Play"
-		play_buttons.click(function() {
-			play_buttons.removeClass('play');
-			$(this).addClass('play');
+		this.setState({
+			songs: new_songs
+		});
+	}
 
-			// Запускаем\Останавливаем воспроизведение
-			// TODO: метод запуска/остановки трека
+	handleClickPlay(id) {
+		const new_songs = [];
+
+		this.state.songs.map(( item ) => {
+			let song = Object.assign({}, item);
+
+			if (item.id == id) {
+				song.isPlay = !song.isPlay;
+			} else {
+				song.isPlay = false;
+			}
+
+			new_songs.push(song);
+		});
+
+		this.setState({
+			songs: new_songs
 		});
 	}
 
 	render() {
-		const songs = this.getPopularSongs();
+		const songs = this.state.songs;
 		const albums = this.getAlbums();
 
 		return (
@@ -147,6 +170,8 @@ class ArtistPage extends React.Component {
 								album_name={ item.album_name }
 								isFavorite={ item.isFavorite }
 								isPlay={ item.isPlay }
+								onClickFavorite={() => this.handleClickFavorite(item.id)}
+								onClickPlay={() => this.handleClickPlay(item.id)}
 							/>
 						})
 					}

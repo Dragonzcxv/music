@@ -4,12 +4,15 @@ $block-name: "b-song-row";
 
 .#{$block-name} {
 	display: grid;
-	grid-template-columns: 2rem auto auto repeat(2, 1fr) 3.9rem 2.4rem;
+	grid-template-columns: 2rem auto auto 1fr 3.9rem 2.4rem;
 	align-items: center;
 	text-align: center;
 
+	@include for-width("950") {
+		grid-template-columns: 2rem auto auto repeat(2, 1fr) 3.9rem 2.4rem;
+	}
+
 	&__number {
-		width: 2rem;
 		font-weight: 300;
 	}
 
@@ -21,17 +24,38 @@ $block-name: "b-song-row";
 		object-fit: contain;
 		width: auto;
 		height: 2.8rem;
-		margin-right: 1.5rem;
+		margin-right: 0.5rem;
+
+		@include for-width("mobile") {
+			margin-right: 1.5rem;
+		}
 	}
 
 	&__name {
 		text-align: left;
 	}
 
-	&__album-name {
+	&__album-name,
+	&__album-name-mobile {
 		text-align: left;
 		font-weight: 500;
 		color: $color-gray-light;
+	}
+
+	&__album-name {
+		display: none;
+
+		@include for-width("950") {
+			display: block;
+		}
+	}
+
+	&__album-name-mobile {
+		display: block;
+
+		@include for-width("950") {
+			display: none;
+		}
 	}
 
 	&__play {

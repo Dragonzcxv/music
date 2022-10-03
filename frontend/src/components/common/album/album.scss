@@ -5,6 +5,12 @@ $block-name: "b-album";
 .#{$block-name} {
 	position: relative;
 
+	&:hover {
+		.#{$block-name}__name {
+			color: $color-red;
+		}
+	}
+
 	&__image {
 		//
 	}

@@ -15,9 +15,11 @@ class ArtistBanner extends React.Component {
 				<div className={ `${this.block_name}__back` } style={{ "--bg-image": `url(${this.props.bg_image})` }}></div>
 				<div className={ `${this.block_name}__main` }>
 					<img className={ `${this.block_name}__artist-img` } src={ this.props.image } alt={ this.props.image_alt } />
-					<h1 className={ `${this.block_name}__name` }>{ this.props.name }</h1>
-					<div className={ `${this.block_name}__subscribe` }>
-						<SubscribeButton isSubscribe={ this.props.isSubscribe } />
+					<div className={ `${this.block_name}__name-container` }>
+						<h1 className={ `${this.block_name}__name` }>{ this.props.name }</h1>
+						<div className={ `${this.block_name}__subscribe` }>
+							<SubscribeButton isSubscribe={ this.props.isSubscribe } />
+						</div>
 					</div>
 				</div>
 			</div>

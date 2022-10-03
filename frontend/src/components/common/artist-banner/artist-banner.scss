@@ -23,8 +23,12 @@ $block-name: "b-artist-banner";
 	}
 
 	&__main {
-		display: flex;
+		display: block;
 		width: 100%;
+
+		@include for-width("mobile") {
+			display: flex;
+		}
 	}
 
 	&__artist-img {
@@ -35,13 +39,24 @@ $block-name: "b-artist-banner";
 		outline: 1px solid $color-red;
 	}
 
+	&__name-container {
+		display: block;
+
+		@include for-width("mobile") {
+			flex: 1 1 auto;
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: 2.5rem;
+		}
+	}
+
 	&__name {
-		margin-left: 2.5rem;
+		margin-right: auto;
 	}
 
 	&__subscribe {
+		display: inline-block;
 		margin-top: auto;
-		margin-left: auto;
 
 		.b-subscribe-button {
 			height: 3rem;

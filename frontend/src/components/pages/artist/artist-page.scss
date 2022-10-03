@@ -33,7 +33,15 @@ $block-name: "b-artist-page";
 		margin-top: 0.75rem;
 
 		.b-album {
-			@include grid-cell(5, $top: true);
+			@include grid-cell(3, $top: true);
+
+			@include for-width("950") {
+				@include grid-cell(4, $top: true);
+			}
+
+			@include for-width("middle2") {
+				@include grid-cell(5, $top: true);
+			}
 		}
 	}
 }

@@ -3,8 +3,13 @@
 $block-name: "b-side-menu";
 
 .#{$block-name} {
-	padding: 2rem;
+	max-width: 18.8rem;
+	padding: 1rem;
 	background-color: $color-gray;
+
+	@include for-width("mobile") {
+		padding: 2rem;
+	}
 
 	&__header {
 		display: flex;
@@ -13,13 +18,23 @@ $block-name: "b-side-menu";
 	}
 
 	&__title {
+		display: none;
 		margin-left: 0.75rem;
+
+		@include for-width("middle") {
+			display: block;
+		}
 	}
 
 	&__icon {
 		flex: 0 0 auto;
-		width: 3.6rem;
-		height: 3.6rem;
+		width: 2.6rem;
+		height: 2.6rem;
+
+		@include for-width("mobile") {
+			width: 3.6rem;
+			height: 3.6rem;
+		}
 	}
 
 	&__items {
@@ -29,8 +44,17 @@ $block-name: "b-side-menu";
 	&__item {
 		display: flex;
 		align-items: center;
-		margin-bottom: 3rem;
+		margin-bottom: 1.5rem;
 		color: $color-gray-light;
+		justify-content: center;
+
+		@include for-width("mobile") {
+			margin-bottom: 3rem;
+		}
+
+		@include for-width("middle") {
+			justify-content: flex-start;
+		}
 
 		&:hover {
 			.#{$block-name}__item-icon {
@@ -44,18 +68,28 @@ $block-name: "b-side-menu";
 
 		&-icon {
 			flex: 0 0 auto;
-			width: 2.5rem;
-			height: 2.5rem;
+			width: 2rem;
+			height: 2rem;
 			mask-image: var(--icon);
 			mask-position: center;
 			mask-size: contain;
 			background-color: $color-gray-light;
 			transition: background-color 0.2s;
+
+			@include for-width("mobile") {
+				width: 2.5rem;
+				height: 2.5rem;
+			}
 		}
 
 		&-title {
+			display: none;
 			margin-left: 2rem;
 			transition: color 0.2s;
+
+			@include for-width("middle") {
+				display: block;
+			}
 		}
 
 		&:last-child {
