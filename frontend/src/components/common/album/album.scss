@@ -1,0 +1,28 @@
+@import "styles/styles";
+
+$block-name: "b-album";
+
+.#{$block-name} {
+	position: relative;
+
+	&__image {
+		//
+	}
+
+	&__name {
+		//
+	}
+
+	&__year {
+		color: $color-gray-light;
+	}
+
+	&__link {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+	}
+}

@@ -221,7 +221,7 @@
 	@if ($size != 0) {
 		@if (type-of($size) == "number") {
 			@if (unit($size) == "") {
-				$width: (100 / $size) + "%";
+				$width: calc(100 / $size) + "%";
 			} @else {
 				$width: $size;
 			}

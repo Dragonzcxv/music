@@ -49,6 +49,10 @@ $block-name: "b-song-row";
 		&:hover {
 			transform: scale(1.1);
 		}
+
+		&.play {
+			mask-image: url("/images/icons/pause.png");
+		}
 	}
 
 	&__favorite {
