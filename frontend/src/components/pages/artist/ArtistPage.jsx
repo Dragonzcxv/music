@@ -11,6 +11,9 @@ class ArtistPage extends React.Component {
 		this.state = {
 			songs: this.getPopularSongs(),
 		};
+
+		// Символьный код исполнителя
+		// console.log(this.props.artist_code);
 	}
 
 	getAlbums() {
@@ -148,7 +151,7 @@ class ArtistPage extends React.Component {
 		const albums = this.getAlbums();
 
 		return (
-			<div className={ this.block_name } ref={el => this.el = el}>
+			<div className={ this.block_name }>
 				<div className={ `${this.block_name}__banner l-negative-container-all` }>
 					<ArtistBanner
 						name="Artist"
@@ -170,8 +173,8 @@ class ArtistPage extends React.Component {
 								album_name={ item.album_name }
 								isFavorite={ item.isFavorite }
 								isPlay={ item.isPlay }
-								onClickFavorite={() => this.handleClickFavorite(item.id)}
-								onClickPlay={() => this.handleClickPlay(item.id)}
+								onClickFavorite={ () => this.handleClickFavorite(item.id) }
+								onClickPlay={ () => this.handleClickPlay(item.id) }
 							/>
 						})
 					}

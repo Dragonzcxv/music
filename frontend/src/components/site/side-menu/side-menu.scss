@@ -66,6 +66,18 @@ $block-name: "b-side-menu";
 			}
 		}
 
+		&.active {
+			pointer-events: none;
+
+			.#{$block-name}__item-icon {
+				background-color: $color-white;
+			}
+
+			.#{$block-name}__item-title {
+				color: $color-white;
+			}
+		}
+
 		&-icon {
 			flex: 0 0 auto;
 			width: 2rem;
@@ -84,7 +96,7 @@ $block-name: "b-side-menu";
 
 		&-title {
 			display: none;
-			margin-left: 2rem;
+			margin-left: 2rem !important;
 			transition: color 0.2s;
 
 			@include for-width("middle") {

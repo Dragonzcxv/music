@@ -1,39 +1,40 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "components/pages/home/Home";
-import NotFound from "components/pages/not-found/NotFound";
+import { BrowserRouter as Router } from "react-router-dom";
+import SideMenu from "components/site/side-menu/SideMenu";
 import "normalize.css";
 import "styles/layout/index";
-import SideMenu from "components/site/side-menu/SideMenu";
-import ArtistPage from "../components/pages/artist/ArtistPage";
+import Navigation from "../components/navigation/Navigation";
 
 $(() => {
 	const menu_items = [
 		{
+			id: 1,
 			title: "Home",
 			icon: '/mock/side-menu/home.png',
 			link: "/",
+			active: document.location.pathname == "/",
 		},
 		{
+			id: 2,
 			title: 'Playlist',
 			icon: '/mock/side-menu/playlist.svg',
-			link: "/",
+			link: "/playlist/",
+			active: document.location.pathname == "/playlist/",
 		},
 		{
-			title: 'Artist',
+			id: 3,
+			title: 'Artists',
 			icon: '/mock/side-menu/artist.png',
-			link: "/",
+			link: "/artists/",
+			active: document.location.pathname == "/artists/",
 		},
 		{
-			title: 'Premium',
-			icon: '/mock/side-menu/premium.svg',
-			link: "/",
-		},
-		{
+			id: 4,
 			title: "My Account",
 			icon: '/mock/side-menu/my-account.png',
-			link: "/",
+			link: "/account/",
+			active: document.location.pathname == "/account/",
 		},
 	];
 
@@ -46,11 +47,7 @@ $(() => {
 					items={ menu_items }
 				/>
 				<main className="b-main">
-					<Routes>
-						<Route path="/" element={ <Home /> } />
-						<Route path="/artist/" element={ <ArtistPage /> } />
-						<Route path="*" element={ <NotFound /> } />
-					</Routes>
+					<Navigation />
 				</main>
 			</Router>
 		);
