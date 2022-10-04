@@ -4,8 +4,12 @@ $block-name: "b-side-menu";
 
 .#{$block-name} {
 	max-width: 18.8rem;
-	padding: 1rem;
+	padding: 0.5rem;
 	background-color: $color-gray;
+
+	@include for-width("450") {
+		padding: 1rem;
+	}
 
 	@include for-width("mobile") {
 		padding: 2rem;
@@ -28,8 +32,13 @@ $block-name: "b-side-menu";
 
 	&__icon {
 		flex: 0 0 auto;
-		width: 2.6rem;
-		height: 2.6rem;
+		width: 2rem;
+		height: 2rem;
+
+		@include for-width("450") {
+			width: 2.6rem;
+			height: 2.6rem;
+		}
 
 		@include for-width("mobile") {
 			width: 3.6rem;
@@ -80,13 +89,18 @@ $block-name: "b-side-menu";
 
 		&-icon {
 			flex: 0 0 auto;
-			width: 2rem;
-			height: 2rem;
+			width: 1.5rem;
+			height: 1.5rem;
 			mask-image: var(--icon);
 			mask-position: center;
 			mask-size: contain;
 			background-color: $color-gray-light;
 			transition: background-color 0.2s;
+
+			@include for-width("450") {
+				width: 2rem;
+				height: 2rem;
+			}
 
 			@include for-width("mobile") {
 				width: 2.5rem;

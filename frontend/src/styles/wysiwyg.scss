@@ -3,10 +3,25 @@
 	h1,
 	.h1 {
 		font-weight: 700;
-		font-size: 4.5rem;
-		line-height: 5.25rem;
+		font-size: 1.5rem; // 30px
+		line-height: 2.25rem;
 		margin: 0;
 		padding: 0;
+
+		@include for-width("450") {
+			font-size: 2rem; // 40px
+			line-height: 3.25rem;
+		}
+
+		@include for-width("mobile") {
+			font-size: 3.5rem; // 70px
+			line-height: 4.25rem;
+		}
+
+		@include for-width("middle") {
+			font-size: 4.5rem; // 90px
+			line-height: 5.25rem;
+		}
 	}
 
 	h2,
@@ -33,11 +48,16 @@
 
 	h4,
 	.h4 {
-		font-size: 1.25rem; // 25px
+		font-size: 1rem; // 20px
 		line-height: 1.85rem;
 		margin: 0;
 		padding: 0;
 		font-weight: 500;
+
+		@include for-width("mobile") {
+			font-size: 1.25rem; // 25px
+			line-height: 4.25rem;
+		}
 	}
 
 	p,

@@ -3,5 +3,48 @@
 $block-name: "b-home";
 
 .#{$block-name} {
-	//
+	&__banner {
+		height: 10rem;
+
+		@include for-width("mobile") {
+			height: 15rem;
+		}
+
+		@include for-width("middle") {
+			height: 20rem;
+		}
+	}
+
+	&__title {
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	&__artists {
+		@include grid-container($top: true);
+
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 0.75rem;
+
+		.b-album {
+			@include grid-cell(1, $top: true);
+
+			@include for-width("450") {
+				@include grid-cell(2, $top: true);
+			}
+
+			@include for-width("mobile") {
+				@include grid-cell(3, $top: true);
+			}
+
+			@include for-width("950") {
+				@include grid-cell(4, $top: true);
+			}
+
+			@include for-width("middle2") {
+				@include grid-cell(5, $top: true);
+			}
+		}
+	}
 }
