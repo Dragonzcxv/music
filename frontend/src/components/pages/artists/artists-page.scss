@@ -3,7 +3,18 @@
 $block-name: "b-artists-page";
 
 .#{$block-name} {
-	.b-search {
+	&__search {
+		margin-top: 1rem;
 		width: 100%;
+	}
+
+	&__artists {
+		@include grid-container;
+
+		display: flex;
+	}
+
+	&__artist {
+		@include grid-cell(4, $top: true);
 	}
 }

@@ -3,6 +3,7 @@
 $block-name: "b-search";
 
 .#{$block-name} {
+	width: 100%;
 	height: 2rem;
 
 	&__input-container {
