@@ -3,5 +3,7 @@
 $block-name: "b-artists-page";
 
 .#{$block-name} {
-	//
+	.b-search {
+		width: 100%;
+	}
 }

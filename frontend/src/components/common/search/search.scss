@@ -1,0 +1,58 @@
+@import "styles/styles";
+
+$block-name: "b-search";
+
+.#{$block-name} {
+	height: 2rem;
+
+	&__input-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__input {
+		width: 100%;
+		height: 100%;
+		background-color: $color-black;
+		border: none;
+		border-bottom: 1px solid $color-gray-light;
+		outline: none;
+		color: $color-gray-light;
+		padding-right: 2.5rem;
+
+		&::placeholder {
+			color: $color-gray-light;
+			opacity: 1;
+		}
+
+		&:focus {
+			color: $color-white;
+			border-bottom: 1px solid $color-white;
+
+			&::placeholder {
+				color: $color-white;
+				opacity: 1;
+			}
+
+			& + .#{$block-name}__icon {
+				background-color: $color-white !important;
+			}
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 1rem;
+		margin: auto;
+		width: 1rem;
+		height: 1rem;
+		mask-image: url("/images/icons/search.png");
+		mask-size: contain;
+		mask-position: center;
+		mask-repeat: no-repeat;
+		background-color: $color-gray-light;
+	}
+}
