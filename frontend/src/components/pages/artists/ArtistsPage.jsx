@@ -172,29 +172,29 @@ class ArtistsPage extends React.Component {
 	 * Метод, вызываемый при клике на "Добавить в избранное"
 	 * @param { int } id - Индефикатор трека 
 	 */
-		 handleClickFavorite(id) {
-			const new_songs = [];
-	
-			this.state.songs.map(( item ) => {
-				let song = Object.assign({}, item);
-	
-				if (item.id == id) {``
-					song.isFavorite = !song.isFavorite;
-				}
-	
-				new_songs.push(song);
-			});
-	
-			this.setState({
-				songs: new_songs
-			});
-		}
+	handleClickFavorite(id) {
+		const new_songs = [];
+
+		this.state.songs.map(( item ) => {
+			let song = Object.assign({}, item);
+
+			if (item.id == id) {``
+				song.isFavorite = !song.isFavorite;
+			}
+
+			new_songs.push(song);
+		});
+
+		this.setState({
+			songs: new_songs
+		});
+	}
 
 	/**
 	 * Находит трек по id и обновляет его текущую продолжительность
 	 * @param { int } id - Индификатор трека 
 	 */
-	 updateSongDuration(id) {
+	updateSongDuration(id) {
 		const new_songs = [];
 
 		this.state.songs.map(( item ) => {

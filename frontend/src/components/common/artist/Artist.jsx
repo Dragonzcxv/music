@@ -47,6 +47,7 @@ class Artist extends React.Component {
 Artist.propTypes = {
 	id: PropTypes.number,
 	name: PropTypes.string,
+	link: PropTypes.string,
 	songs: PropTypes.array,
 	image: PropTypes.string,
 	onClickFavorite: PropTypes.func,
