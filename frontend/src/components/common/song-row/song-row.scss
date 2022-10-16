@@ -3,8 +3,7 @@
 $block-name: "b-song-row";
 
 .#{$block-name} {
-	display: grid;
-	grid-template-columns: auto 1fr 2.4rem auto;
+	display: flex;
 	align-items: center;
 	text-align: center;
 	background-color: transparent;
@@ -22,11 +21,11 @@ $block-name: "b-song-row";
 			}
 		}
 
-		.#{$block-name}__duration  {
+		.#{$block-name}__duration {
 			display: none;
 		}
 
-		.#{$block-name}__current-duration  {
+		.#{$block-name}__current-duration {
 			display: block;
 		}
 	}
@@ -39,10 +38,6 @@ $block-name: "b-song-row";
 				display: block;
 			}
 		}
-	}
-
-	@include for-width("950") {
-		grid-template-columns: auto repeat(2, 1fr) 2.4rem auto;
 	}
 
 	&__image-container {
@@ -93,32 +88,16 @@ $block-name: "b-song-row";
 		text-align: left;
 	}
 
-	&__album-name,
-	&__album-name-mobile {
+	&__album-name {
 		text-align: left;
 		font-weight: 500;
 		color: $color-gray-light;
 	}
 
-	&__album-name {
-		display: none;
-
-		@include for-width("950") {
-			display: block;
-		}
-	}
-
-	&__album-name-mobile {
-		display: block;
-
-		@include for-width("950") {
-			display: none;
-		}
-	}
-
 	&__favorite {
 		width: 2.4rem;
 		height: 2.4rem;
+		margin-left: auto;
 		background-color: $color-gray-light;
 		mask-image: url("/images/icons/favorite.png");
 		mask-position: center;

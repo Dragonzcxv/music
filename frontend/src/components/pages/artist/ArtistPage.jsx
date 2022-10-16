@@ -69,7 +69,6 @@ class ArtistPage extends React.Component {
 		return [
 			{
 				id: 1,
-				number: 1,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				name: "name",
@@ -82,7 +81,6 @@ class ArtistPage extends React.Component {
 			},
 			{
 				id: 2,
-				number: 2,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				name: "name",
@@ -95,7 +93,6 @@ class ArtistPage extends React.Component {
 			},
 			{
 				id: 3,
-				number: 3,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				name: "name",
@@ -108,7 +105,6 @@ class ArtistPage extends React.Component {
 			},
 			{
 				id: 4,
-				number: 4,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				duration: "3:00",
@@ -224,7 +220,6 @@ class ArtistPage extends React.Component {
 						songs.map(( item, index ) => {
 							return <SongRow
 								key={ index }
-								number={ item.number }
 								album_image={ item.album_image }
 								album_image_alt={ item.album_image_alt }
 								name={ item.name }

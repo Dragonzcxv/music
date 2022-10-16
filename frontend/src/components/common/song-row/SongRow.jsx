@@ -18,9 +18,8 @@ class SongRow extends React.Component {
 				</div>
 				<div className={ `${this.block_name}__name h3` }>
 					{ this.props.name }
-					<p className={ `${this.block_name}__album-name-mobile` }>{ this.props.album_name }</p>
+					<p className={ `${this.block_name}__album-name` }>{ this.props.album_name }</p>
 				</div>
-				<p className={ `${this.block_name}__album-name` }>{ this.props.album_name }</p>
 				<div
 					className={ `${this.block_name}__favorite ${this.props.isFavorite ? 'active' : ''}` }
 					onClick={ (e) => {
@@ -44,7 +43,6 @@ SongRow.defaultProps = {
 };
 
 SongRow.propTypes = {
-	number: PropTypes.number,
 	album_image: PropTypes.string,
 	ablum_image_alt: PropTypes.string,
 	name: PropTypes.string,
@@ -55,7 +53,7 @@ SongRow.propTypes = {
 	onClickFavorite: PropTypes.func,
 	onClickPlay: PropTypes.func,
 	duration: PropTypes.string,
-	current_duration: PropTypes.string
+	currentDuration: PropTypes.number
 };
 
 export default SongRow;

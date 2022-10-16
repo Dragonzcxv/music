@@ -15,6 +15,6 @@ $block-name: "b-artists-page";
 	}
 
 	&__artist {
-		@include grid-cell(4, $top: true);
+		@include grid-cell(3, $top: true);
 	}
 }

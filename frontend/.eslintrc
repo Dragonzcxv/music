@@ -17,6 +17,10 @@
 	"plugins": [
 		"react"
 	],
+	"env": {
+		"browser": true,
+		"node": true
+	},
 	"rules": {
 		"indent": ["error", "tab", {"SwitchCase": 1}],
 		"react/jsx-uses-vars": "error",
