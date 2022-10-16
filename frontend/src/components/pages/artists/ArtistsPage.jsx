@@ -87,6 +87,7 @@ class ArtistsPage extends React.Component {
 						name: "TrackName",
 						artist: "Artist",
 						duration: "1:00",
+						currentDuration: "0:00",
 						isFavorite: false,
 						isPlay: false
 					},

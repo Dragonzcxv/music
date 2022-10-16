@@ -12,6 +12,8 @@ class ArtistPage extends React.Component {
 			songs: this.getPopularSongs(),
 		};
 
+		this.timerDurationId = null;
+
 		// Символьный код исполнителя
 		// console.log(this.props.artist_code);
 	}
@@ -71,9 +73,12 @@ class ArtistPage extends React.Component {
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				name: "name",
+				duration: "3:00",
+				currentDuration: 0,
 				album_name: "album",
 				isFavorite: false,
-				isPlay: false
+				isPlay: false,
+				isActive: false
 			},
 			{
 				id: 2,
@@ -81,9 +86,12 @@ class ArtistPage extends React.Component {
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				name: "name",
+				duration: "3:00",
+				currentDuration: 0,
 				album_name: "album",
 				isFavorite: false,
-				isPlay: false
+				isPlay: false,
+				isActive: false
 			},
 			{
 				id: 3,
@@ -91,23 +99,33 @@ class ArtistPage extends React.Component {
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
 				name: "name",
+				duration: "3:00",
+				currentDuration: 0,
 				album_name: "album",
 				isFavorite: false,
-				isPlay: false
+				isPlay: false,
+				isActive: false
 			},
 			{
 				id: 4,
 				number: 4,
 				album_image: "/mock/artist/album_image.jpg",
 				ablum_image_alt: "name",
+				duration: "3:00",
+				currentDuration: 0,
 				name: "name",
 				album_name: "album",
 				isFavorite: false,
-				isPlay: false
+				isPlay: false,
+				isActive: false
 			},
 		];
 	}
 
+	/**
+	 * Метод, вызываемый при клике на "Добавить в избранное"
+	 * @param { int } id - Индефикатор трека 
+	 */
 	handleClickFavorite(id) {
 		const new_songs = [];
 
@@ -126,6 +144,32 @@ class ArtistPage extends React.Component {
 		});
 	}
 
+	/**
+	 * Находит трек по id и обновляет его текущую продолжительность
+	 * @param { int } id - Индификатор трека 
+	 */
+	updateSongDuration(id) {
+		const new_songs = [];
+
+		this.state.songs.map(( item ) => {
+			let song = Object.assign({}, item);
+
+			if (item.id == id) {
+				song.currentDuration = song.currentDuration + 1;
+			}
+
+			new_songs.push(song);
+		});
+
+		this.setState({
+			songs: new_songs
+		});
+	}
+
+	/**
+	 * Метод, вызываемый при клике на блок трека
+	 * @param { int } id - Индефикатор трека
+	 */
 	handleClickPlay(id) {
 		const new_songs = [];
 
@@ -133,9 +177,23 @@ class ArtistPage extends React.Component {
 			let song = Object.assign({}, item);
 
 			if (item.id == id) {
+				song.isActive = true;
 				song.isPlay = !song.isPlay;
+
+				if (this.timerDurationId) {
+					clearTimeout(this.timerDurationId);
+				}
+
+				if (song.isActive && song.isPlay) {
+					// TODO: Заменить функционал мусорного подсчёта времени при функционале прослушивания
+					this.timerDurationId = setInterval(() => {
+						this.updateSongDuration(id);
+					}, 1000);
+				}
 			} else {
+				song.currentDuration = 0;
 				song.isPlay = false;
+				song.isActive = false;
 			}
 
 			new_songs.push(song);
@@ -173,8 +231,11 @@ class ArtistPage extends React.Component {
 								album_name={ item.album_name }
 								isFavorite={ item.isFavorite }
 								isPlay={ item.isPlay }
+								isActive={ item.isActive }
 								onClickFavorite={ () => this.handleClickFavorite(item.id) }
 								onClickPlay={ () => this.handleClickPlay(item.id) }
+								duration={ item.duration }
+								currentDuration={ item.currentDuration }
 							/>
 						})
 					}

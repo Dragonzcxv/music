@@ -4,30 +4,88 @@ $block-name: "b-song-row";
 
 .#{$block-name} {
 	display: grid;
-	grid-template-columns: 2rem auto auto 1fr 3.9rem 2.4rem;
+	grid-template-columns: auto 1fr 2.4rem auto;
 	align-items: center;
 	text-align: center;
+	background-color: transparent;
+	border-radius: 12px;
+	padding: 0.5rem;
+	transition: background-color 0.2s linear;
+	cursor: pointer;
+
+	&.active {
+		background-color: $color-gray;
+
+		.#{$block-name} {
+			&__play {
+				display: block;
+			}
+		}
+
+		.#{$block-name}__duration  {
+			display: none;
+		}
+
+		.#{$block-name}__current-duration  {
+			display: block;
+		}
+	}
+
+	&:hover {
+		background-color: $color-gray;
+
+		.#{$block-name} {
+			&__play {
+				display: block;
+			}
+		}
+	}
 
 	@include for-width("950") {
-		grid-template-columns: 2rem auto auto repeat(2, 1fr) 3.9rem 2.4rem;
+		grid-template-columns: auto repeat(2, 1fr) 2.4rem auto;
 	}
 
-	&__number {
-		font-weight: 300;
-	}
-
-	&__char {
-		margin-right: 1.25rem;
-	}
-
-	&__album-image {
-		object-fit: contain;
-		width: auto;
+	&__image-container {
+		position: relative;
 		height: 2.8rem;
 		margin-right: 0.5rem;
 
 		@include for-width("mobile") {
 			margin-right: 1.5rem;
+		}
+	}
+
+	&__album-image {
+		object-fit: contain;
+		width: auto;
+		height: 100%;
+		border-radius: 12px;
+	}
+
+	&__play {
+		display: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 2rem;
+		height: 2rem;
+		margin: auto;
+		mask-image: url("/images/icons/play.png");
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		background-color: $color-red;
+		cursor: pointer;
+		transition: transform 0.2s linear;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+
+		&.play {
+			mask-image: url("/images/icons/pause.png");
 		}
 	}
 
@@ -58,27 +116,6 @@ $block-name: "b-song-row";
 		}
 	}
 
-	&__play {
-		position: relative;
-		width: 2.4rem;
-		height: 2.4rem;
-		mask-image: url("/images/icons/play.png");
-		mask-position: center;
-		mask-repeat: no-repeat;
-		mask-size: contain;
-		background-color: $color-red;
-		cursor: pointer;
-		transition: transform 0.2s linear;
-
-		&:hover {
-			transform: scale(1.1);
-		}
-
-		&.play {
-			mask-image: url("/images/icons/pause.png");
-		}
-	}
-
 	&__favorite {
 		width: 2.4rem;
 		height: 2.4rem;
@@ -97,5 +134,14 @@ $block-name: "b-song-row";
 		&.active {
 			background-color: $color-red;
 		}
+	}
+
+	&__duration {
+		margin-left: 1rem;
+	}
+
+	&__current-duration {
+		display: none;
+		margin-left: 1rem;
 	}
 }
