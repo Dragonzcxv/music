@@ -19,6 +19,10 @@ $block-name: "b-song-row";
 			&__play {
 				display: block;
 			}
+
+			&__image-container::before {
+				display: block;
+			}
 		}
 
 		.#{$block-name}__duration {
@@ -37,6 +41,10 @@ $block-name: "b-song-row";
 			&__play {
 				display: block;
 			}
+
+			&__image-container::before {
+				display: block;
+			}
 		}
 	}
 
@@ -47,6 +55,22 @@ $block-name: "b-song-row";
 
 		@include for-width("mobile") {
 			margin-right: 1.5rem;
+		}
+
+		// Задний фон иконок play и stop
+		&::before {
+			display: none;
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 100%;
+			margin: auto;
+			background-color: $color-white;
 		}
 	}
 

@@ -12,9 +12,34 @@ $block-name: "b-artists-page";
 		@include grid-container;
 
 		display: flex;
+		flex-wrap: wrap;
 	}
 
 	&__artist {
-		@include grid-cell(3, $top: true);
+		@include grid-cell(1, $top: true);
+
+		.b-artist__songs {
+			display: none;
+		}
+
+		.b-artist__header {
+			height: 4rem;
+		}
+
+		@include for-width("950") {
+			@include grid-cell(2, $top: true);
+
+			.b-artist__songs {
+				display: block;
+			}
+
+			.b-artist__header {
+				height: 6rem;
+			}
+		}
+
+		@include for-width("middle2") {
+			@include grid-cell(3, $top: true);
+		}
 	}
 }
