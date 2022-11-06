@@ -1,6 +1,8 @@
 import React from "react";
 import Artist from "../../common/artist/Artist";
+import Pager from "../../common/pager/Pager";
 import Search from "../../common/search/Search";
+import PropTypes from "prop-types";
 import "./artists-page.scss";
 
 class ArtistsPage extends React.Component {
@@ -11,7 +13,8 @@ class ArtistsPage extends React.Component {
 		this.timerDurationId = null;
 
 		this.state = {
-			songs: this.getSongs()
+			songs: this.getSongs(),
+			page: this.props.page
 		}
 	}
 
@@ -253,6 +256,15 @@ class ArtistsPage extends React.Component {
 	render() {
 		return (
 			<div className={ `${this.block_name}` }>
+				<div className={ `${this.block_name}__pager` }>
+					<Pager
+						sectionPath="artists"
+						elementsCount={ 51 } // Заменить на текущее число исполнителей
+						elementsOnPage={ 2 }
+						currentPage={ this.state.page }
+						getParamName="page"
+					/>
+				</div>
 				<div className={ `${this.block_name}__search` }>
 					<Search placeholder="Поиск" onChange={ () => this.handleChangeSearch() }></Search>
 				</div>
@@ -278,6 +290,14 @@ class ArtistsPage extends React.Component {
 			</div>
 		);
 	}
+}
+
+ArtistsPage.defaultProps = {
+	page: 1
+};
+
+ArtistsPage.propTypes = {
+	page: PropTypes.number,
 }
 
 export default ArtistsPage;

@@ -10,7 +10,8 @@
 		"scss/comment-no-empty": null,
 		"scss/at-rule-conditional-no-parentheses": null,
 		"scss/at-mixin-pattern": null,
-		"scss/dollar-variable-empty-line-before": null
+		"scss/dollar-variable-empty-line-before": null,
+		"selector-class-pattern": null
 	},
 	"ignoreFiles": [
 		"/**/node_modules/**/*",

@@ -1,0 +1,103 @@
+@import "styles/styles";
+
+$block-name: "b-pager";
+
+.#{$block-name} {
+	position: relative;
+	display: flex;
+	height: 2rem;
+
+	&.start {
+		.#{$block-name}__start {
+			display: block;
+		}
+	}
+
+	&.end {
+		.#{$block-name}__end {
+			display: block;
+		}
+	}
+
+	&.s-start {
+		.#{$block-name}__space.start {
+			display: block;
+		}
+	}
+
+	&.s-end {
+		.#{$block-name}__space.end {
+			display: block;
+		}
+	}
+
+	&__prev,
+	&__next {
+		width: 20px;
+		height: 100%;
+		mask-image: url("/images/icons/arrow.png");
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		transition: background-color 0.2s linear;
+		background-color: $color-gray-light;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $color-white;
+		}
+	}
+
+	&__prev {
+		transform: rotate(180deg);
+		margin-right: 0.25rem;
+	}
+
+	&__next {
+		margin-left: 0.25rem;
+	}
+
+	&__pages {
+		display: flex;
+		border-bottom: 2px solid $color-gray-light;
+	}
+
+	&__start {
+		display: none;
+	}
+
+	&__middle {
+		display: flex;
+	}
+
+	&__end {
+		display: none;
+	}
+
+	&__space {
+		display: none;
+		position: relative;
+		top: 2px;
+		width: 2.5rem;
+		border-bottom: 2px solid $color-gray;
+	}
+
+	&__page {
+		position: relative;
+		top: 2px;
+		height: 100%;
+		text-align: center;
+		min-width: 2.5rem;
+		border-bottom: 0 solid $color-gray-light;
+		transition: border-bottom-width 0.2s linear;
+		cursor: pointer;
+
+		&:hover {
+			border-bottom-width: 4px;
+		}
+
+		&.active {
+			border-bottom: 4px solid $color-white;
+		}
+	}
+}

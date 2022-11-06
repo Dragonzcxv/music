@@ -20,12 +20,31 @@ class Navigation extends React.Component {
 			<Routes>
 				<Route path="/" element={ <Home /> } />
 				<Route path="/artists/" element={ <ArtistsPage /> } />
+				<Route path="/artists/:page_param/" element={ <ArtistsRoute /> } />
 				<Route path="/artists/:artist_code/" element={ <ArtistRoute /> } />
 				<Route path="/artists/:artist_code/:album_code/" element={ <AlbumRoute /> } />
 				<Route path="/account/" element={ <AccountPage /> } />
 				<Route path="/playlist/" element={ <PlaylistPage /> } />
 				<Route path="*" element={ <NotFound /> } />
 			</Routes>
+		);
+	}
+}
+
+// Обработка разводной страницы
+function ArtistsRoute() {
+	const { page_param } = useParams();
+	const page = Number(page_param);
+
+	if (isNaN(page)) {
+		return (
+			<NotFound />
+		);
+	} else {
+		return (
+			<ArtistsPage
+				page={ page }
+			/>
 		);
 	}
 }
