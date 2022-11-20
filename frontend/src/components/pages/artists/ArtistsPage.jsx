@@ -28,19 +28,19 @@ class ArtistsPage extends React.Component {
 				id: 1,
 				name: "Artist",
 				image: "/mock/artist/bg_image_small.jpg",
-				link: "/artist/1/",
+				link: "/artists/1/",
 			},
 			{
 				id: 2,
 				name: "Artist",
 				image: "/mock/artist/bg_image_small.jpg",
-				link: "/artist/1/",
+				link: "/artists/1/",
 			},			
 			{
 				id: 3,
 				name: "Artist",
 				image: "/mock/artist/bg_image_small.jpg",
-				link: "/artist/1/",
+				link: "/artists/1/",
 			}
 		];
 	}
@@ -253,18 +253,15 @@ class ArtistsPage extends React.Component {
 		});
 	}
 
+	handleClickPage(page) {
+		this.setState({
+			page: page
+		});
+	}
+
 	render() {
 		return (
 			<div className={ `${this.block_name}` }>
-				<div className={ `${this.block_name}__pager` }>
-					<Pager
-						sectionPath="artists"
-						elementsCount={ 51 } // Заменить на текущее число исполнителей
-						elementsOnPage={ 2 }
-						currentPage={ this.state.page }
-						getParamName="page"
-					/>
-				</div>
 				<div className={ `${this.block_name}__search` }>
 					<Search placeholder="Поиск" onChange={ () => this.handleChangeSearch() }></Search>
 				</div>
@@ -286,6 +283,18 @@ class ArtistsPage extends React.Component {
 							);
 						})
 					}
+				</div>
+				<div className={ `${this.block_name}__pager` }>
+					<Pager
+						sectionPath="artists"
+						elementsCount={ 51 } // Заменить на текущее число исполнителей
+						elementsOnPage={ 2 }
+						currentPage={ this.state.page }
+						getParamName="page"
+						firstPageLabel="First Page"
+						lastPageLabel="Last Page"
+						onClickPage={ (page) => this.handleClickPage(page) }
+					/>
 				</div>
 			</div>
 		);

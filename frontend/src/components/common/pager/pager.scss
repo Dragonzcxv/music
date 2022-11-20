@@ -5,7 +5,7 @@ $block-name: "b-pager";
 .#{$block-name} {
 	position: relative;
 	display: flex;
-	height: 2rem;
+	flex-wrap: wrap;
 
 	&.start {
 		.#{$block-name}__start {
@@ -31,10 +31,64 @@ $block-name: "b-pager";
 		}
 	}
 
+	&.prev-disable {
+		.#{$block-name}__prev {
+			display: none;
+		}
+	}
+
+	&.next-disable {
+		.#{$block-name}__next {
+			display: none;
+		}
+	}
+
+	&__start-mobile,
+	&__end-mobile {
+		display: flex;
+		width: 100%;
+		text-align: start;
+		transition: color 0.2s linear;
+		color: $color-white;
+
+		@include for-width("950") {
+			display: none;
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			width: 15px;
+			height: 100%;
+			mask-image: url("/images/icons/arrow.png");
+			mask-position: center;
+			mask-repeat: no-repeat;
+			mask-size: contain;
+			transition: background-color 0.2s linear, margin-left 0.2s linear;
+			background-color: $color-white;
+			margin-left: 5px;
+			cursor: pointer;
+		}
+
+		&:hover {
+			&::after {
+				margin-left: 15px;
+			}
+		}
+	}
+
+	&__start-mobile {
+		margin-bottom: 5px;
+	}
+
+	&__end-mobile {
+		margin-top: 10px;
+	}
+
 	&__prev,
 	&__next {
 		width: 20px;
-		height: 100%;
+		height: 2rem;
 		mask-image: url("/images/icons/arrow.png");
 		mask-position: center;
 		mask-repeat: no-repeat;
@@ -60,6 +114,16 @@ $block-name: "b-pager";
 	&__pages {
 		display: flex;
 		border-bottom: 2px solid $color-gray-light;
+	}
+
+	// Скрываем лишние элементы на мобильном разрешении
+	// перебевая модификаторы
+	&__start,
+	&__end,
+	&__space {
+		@include for-width("950", $direction: "down") {
+			display: none !important;
+		}
 	}
 
 	&__start {
@@ -98,6 +162,7 @@ $block-name: "b-pager";
 
 		&.active {
 			border-bottom: 4px solid $color-white;
+			pointer-events: none;
 		}
 	}
 }

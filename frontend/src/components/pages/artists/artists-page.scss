@@ -42,4 +42,8 @@ $block-name: "b-artists-page";
 			@include grid-cell(3, $top: true);
 		}
 	}
+
+	&__pager {
+		margin-top: 40px;
+	}
 }
